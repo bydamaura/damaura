@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DAMAURA – Handmade Bracelets</title>
+  <meta name="description" content="DAMAURA handmade bracelets — simple shop with bank transfer only. Soft pastel pink theme. Editable without coding.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#FFF6F9;
+      --panel:#FFFFFF;
+      --muted:#6B6B75;
+      --text:#2A2A2E;
+      --accent:#FFB6C9;
+      --accent-2:#FDECF2;
+      --ring:#EFD7DF;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%}
+    body{font-family:Poppins,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:radial-gradient(800px 600px at 15% -10%, rgba(255,182,201,.25), transparent 55%), var(--bg);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:28px 20px 120px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand .logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--accent),#ffd4df);box-shadow:0 8px 28px rgba(255,182,201,.45)}
+    h1{font-size:24px;margin:0}
+    .subtitle{color:var(--muted);font-size:14px}
+    nav{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--ring);border-radius:12px;background:var(--panel);cursor:pointer}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),#ffd4df);border:none;color:#6b0022;font-weight:700}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .card{position:relative;border:1px solid var(--ring);background:var(--panel);border-radius:20px;overflow:hidden}
+    .badge{position:absolute;top:12px;left:12px;background:#fff;color:#b84a71;border:1px solid var(--ring);font-size:12px;padding:4px 8px;border-radius:999px}
+    .img{aspect-ratio:1/1;width:100%;object-fit:cover;background:#f7f7fb}
+    .content{padding:14px}
+    .title{font-weight:700;margin:0 0 6px}
+    .price{font-weight:700}
+    .muted{color:var(--muted)}
+    .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .order-btn{width:100%;margin-top:10px}
+    .section{margin-top:30px}
+    .panel{border:1px solid var(--ring);border-radius:16px;padding:16px;background:var(--panel)}
+    footer{margin-top:40px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .bank-details code{display:block;margin-top:8px;padding:10px;border:1px dashed var(--ring);border-radius:10px;background:#fff;color:#b84a71}
+    .notice{font-size:12px;color:#7e7e86;margin-top:6px}
+    .editor-toggle{position:fixed;right:20px;bottom:20px;z-index:50}
+    .editor{position:fixed;right:20px;bottom:76px;width:360px;max-width:92vw;background:var(--panel);border:1px solid var(--ring);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08);padding:14px;display:none}
+    .editor.open{display:block}
+    .editor input,.editor textarea{width:100%;padding:9px 10px;border-radius:12px;border:1px solid var(--ring);background:#fff;margin:6px 0 10px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          <h1>DAMAURA</h1>
+          <div class="subtitle">Handmade bracelets • Soft pastel • Bank transfer only</div>
+        </div>
+      </div>
+      <nav>
+        <a class="btn" href="#catalog">Catalog</a>
+        <a class="btn" href="#bank">Bank Details</a>
+        <a class="btn primary" href="#order">How to Order</a>
+      </nav>
+    </header>
+
+    <section id="catalog" class="section">
+      <h2>Catalog</h2>
+      <p class="muted">Add your photos, names, and prices. Click “Edit Catalog” to manage items.</p>
+      <div class="grid" id="grid"></div>
+      <div id="empty" class="muted" style="display:none;text-align:center;padding:20px">No bracelets match your search.</div>
+    </section>
+
+    <section id="bank" class="section">
+      <h2>Bank Transfer Details</h2>
+      <div class="panel bank-details">
+        <p>After confirming your order, please make a bank transfer using the details below:</p>
+        <code>
+          Account Holder: <strong>Nimuthu Vanderlan</strong><br>
+          Bank: <strong>Your Bank Name</strong><br>
+          IBAN: <strong>IT00 X 0000 0000 0000 0000 0000</strong><br>
+          BIC / SWIFT: <strong>XXXXXXXXXXX</strong><br>
+          Payment Note: <strong>Order #[your-order-code]</strong>
+        </code>
+      </div>
+    </section>
+
+    <section id="order" class="section">
+      <h2>How to Order</h2>
+      <div class="panel">
+        <ol>
+          <li>Tap “Order via WhatsApp” on a bracelet below.</li>
+          <li>I’ll confirm availability and send you an order code.</li>
+          <li>Make a bank transfer with that order code in the payment note.</li>
+          <li>Send me the receipt; I’ll ship your bracelet.</li>
+        </ol>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="yr"></span> DAMAURA</div>
+      <div>Instagram: <a href="#">@damaura.bracelets</a> • WhatsApp: <a id="waFooter" href="#">message me</a></div>
+    </footer>
+  </div>
+
+  <button id="toggleEditor" class="btn editor-toggle">✏️ Edit Catalog</button>
+  <div id="editor" class="editor">
+    <h3>Catalog Editor</h3>
+    <label>Image <input id="eImage" type="url" placeholder="Image URL or upload below"></label>
+    <input id="eFile" type="file" accept="image/*">
+    <label>Name <input id="eName"></label>
+    <label>Price (€) <input id="ePrice" type="number" step="0.01"></label>
+    <label>ID <input id="eId"></label>
+    <label>Note <input id="eNote"></label>
+    <button id="saveItem" class="btn primary" style="width:100%">Save / Update Item</button>
+  </div>
+
+  <script>
+    const CONFIG = { whatsapp: "+94741270446", currency: "€" };
+    const KEY = 'damaura_products_v1';
+    const SAMPLE = [
+      {id:"BR-101", name:"Minimal Pearl Cord", price:12.00, image:"https://images.unsplash.com/photo-1612444530582-546ccd78d9d7?q=80&w=1200&auto=format&fit=crop", note:"Adjustable knot closure"},
+      {id:"BR-102", name:"Braided Friendship", price:9.50, image:"https://images.unsplash.com/photo-1617031310867-1f7d47d09472?q=80&w=1200&auto=format&fit=crop", note:"Hand-braided cotton"}
+    ];
+    function loadProducts(){ try{ return JSON.parse(localStorage.getItem(KEY))||[] }catch{ return [] } }
+    function saveProducts(l){ localStorage.setItem(KEY,JSON.stringify(l)); }
+    let PRODUCTS = loadProducts(); if(!PRODUCTS.length){ PRODUCTS=SAMPLE; saveProducts(PRODUCTS); }
+    const grid=document.getElementById('grid'); const empty=document.getElementById('empty');
+    const waFooter=document.getElementById('waFooter'); waFooter.href=`https://wa.me/${CONFIG.whatsapp.replace(/[^\\d]/g,'')}`;
+
+    function waLink(p){
+      const base=`https://wa.me/${CONFIG.whatsapp.replace(/[^\\d]/g,'')}`;
+      const msg=encodeURIComponent(`Hello! I want to order: ${p.name} (ID ${p.id}) — ${CONFIG.currency}${p.price}. Is it available?`);
+      return `${base}?text=${msg}`;
+    }
+    function card(p){
+      const el=document.createElement('article'); el.className='card';
+      el.innerHTML=`<span class='badge'>${p.id}</span><img class='img' src='${p.image}' alt='${p.name}'/><div class='content'><h3 class='title'>${p.name}</h3><div class='row'><div><div class='price'>${CONFIG.currency}${p.price}</div><div class='muted'>${p.note||''}</div></div><a class='btn primary order-btn' href='${waLink(p)}' target='_blank'>Order via WhatsApp</a></div></div>`;
+      return el;
+    }
+    function render(){
+      grid.innerHTML=''; PRODUCTS.forEach(p=>grid.appendChild(card(p)));
+      empty.style.display=PRODUCTS.length?'none':'block';
+    }
+    render();
+
+    const toggle=document.getElementById('toggleEditor'); const ed=document.getElementById('editor');
+    const eImage=eImage=document.getElementById('eImage'); const eFile=document.getElementById('eFile'); const eName=document.getElementById('eName'); const ePrice=document.getElementById('ePrice'); const eId=document.getElementById('eId'); const eNote=document.getElementById('eNote'); const save=document.getElementById('saveItem');
+
+    toggle.onclick=()=>{ ed.classList.toggle('open'); };
+    eFile.onchange=ev=>{ const f=ev.target.files?.[0]; if(!f)return; const r=new FileReader(); r.onload=()=>{eImage.value=r.result}; r.readAsDataURL(f); };
+    save.onclick=()=>{
+      const p={id:eId.value||`BR-${Math.floor(100+Math.random()*900)}`,name:eName.value||'Untitled',price:parseFloat(ePrice.value)||0,image:eImage.value||'https://via.placeholder.com/1000x1000.png?text=Bracelet',note:eNote.value};
+      const i=PRODUCTS.findIndex(x=>x.id===p.id); if(i>-1)PRODUCTS[i]=p; else PRODUCTS.push(p); saveProducts(PRODUCTS); render(); eName.value=ePrice.value=eId.value=eNote.value=eImage.value='';
+    };
+    document.getElementById('yr').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
