@@ -65,53 +65,6 @@
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--ring);border-radius:12px;background:var(--panel);cursor:pointer}
     .btn.primary{background:linear-gradient(135deg,var(--accent),#ffd4df);border:none;color:#6b0022;font-weight:700}
 
-    /* HERO SLIDER – full photos, no cropping */
-    .hero-slider{
-      width:100%;
-      margin-bottom:26px;
-      border-radius:24px;
-      overflow:hidden;
-      background:#ffeef7;
-      box-shadow:0 10px 32px rgba(0,0,0,0.06);
-      position:relative;
-    }
-    .hero-track{
-      display:flex;
-      transition:transform 0.6s ease;
-      will-change:transform;
-    }
-    .hero-slide{
-      min-width:100%;
-      flex-shrink:0;
-    }
-    .hero-slide img{
-      width:100%;
-      height:auto;          /* keep full image */
-      object-fit:contain;   /* no cropping */
-      display:block;
-      background:#ffeef7;   /* behind letterbox bars if any */
-    }
-    .hero-dots{
-      position:absolute;
-      left:50%;
-      bottom:10px;
-      transform:translateX(-50%);
-      display:flex;
-      gap:6px;
-    }
-    .hero-dot{
-      width:8px;
-      height:8px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.6);
-      border:1px solid rgba(0,0,0,0.1);
-      cursor:pointer;
-    }
-    .hero-dot.active{
-      width:16px;
-      background:#ffb6c9;
-    }
-
     /* Catalog */
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
     .card{
@@ -298,26 +251,7 @@
       </nav>
     </header>
 
-    <!-- HERO SLIDER -->
-    <div class="hero-slider">
-      <div class="hero-track" id="hero-track">
-        <div class="hero-slide">
-          <img src="white-pearl-bunny.jpeg" alt="White Pearl Bunny preview">
-        </div>
-        <div class="hero-slide">
-          <img src="blue-eye-duo-set.jpeg" alt="Blue Eye Duo Set preview">
-        </div>
-        <div class="hero-slide">
-          <img src="rainbow-beads.jpeg" alt="Rainbow Beads preview">
-        </div>
-      </div>
-      <div class="hero-dots" id="hero-dots">
-        <div class="hero-dot active" data-index="0"></div>
-        <div class="hero-dot" data-index="1"></div>
-        <div class="hero-dot" data-index="2"></div>
-      </div>
-    </div>
-
+    <!-- Catalog -->
     <section id="catalog" class="section">
       <h2>Catalog</h2>
       <div class="section-box">
@@ -367,6 +301,7 @@
       </div>
     </section>
 
+    <!-- Reviews -->
     <section id="reviews" class="section">
       <h2>Customer Reviews</h2>
       <div class="section-box">
@@ -405,7 +340,7 @@
         <span>Message Me</span>
       </a>
     </div>
-    <p class="footer-note">© <span id="yr"></span> Nimu's Studio</p>
+    <p class="footer-note">© 2025 Nim’s Studio</p>
   </footer>
 
   <!-- Gradient definition for Instagram -->
@@ -428,10 +363,10 @@
       <p>After confirming your order, please make a bank transfer using the details below:</p>
       <div class="panel bank-details">
         <code>
-          Account Holder: <strong>Damaura</strong><br>
-          Bank: <strong>Your Bank Name</strong><br>
-          IBAN: <strong>IT00 X 0000 0000 0000 0000 0000</strong><br>
-          BIC / SWIFT: <strong>XXXXXXXXXXX</strong><br>
+          Account Holder: <strong>M K P D S Perera</strong><br>
+          Bank: <strong>Commercial Bank</strong><br>
+          Account Number: <strong>8014032437</strong><br>
+          Branch: <strong>Marawila</strong><br>
           Payment Note: <strong>Order #[your-order-code]</strong>
         </code>
       </div>
@@ -467,8 +402,6 @@
   </div>
 
   <script>
-    document.getElementById('yr').textContent = new Date().getFullYear();
-
     // Bank + How to Order modals
     function setupModal(openBtnId, modalId, closeBtnId) {
       const openBtn = document.getElementById(openBtnId);
@@ -559,49 +492,6 @@
         previewModal.querySelector('.modal').classList.remove('show');
       }
     });
-
-    // HERO SLIDER auto move
-    const heroTrack = document.getElementById('hero-track');
-    const heroDotsContainer = document.getElementById('hero-dots');
-    const heroDots = heroDotsContainer.querySelectorAll('.hero-dot');
-    const totalSlides = heroDots.length;
-    let currentSlide = 0;
-    let sliderTimer = null;
-
-    function goToSlide(index) {
-      currentSlide = (index + totalSlides) % totalSlides;
-      heroTrack.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
-      heroDots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentSlide);
-      });
-    }
-
-    function startSlider() {
-      sliderTimer = setInterval(() => {
-        goToSlide(currentSlide + 1);
-      }, 5000);
-    }
-
-    function stopSlider() {
-      clearInterval(sliderTimer);
-    }
-
-    heroDots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        const idx = parseInt(dot.getAttribute('data-index'), 10);
-        stopSlider();
-        goToSlide(idx);
-        startSlider();
-      });
-    });
-
-    document.querySelector('.hero-slider').addEventListener('mouseenter', stopSlider);
-    document.querySelector('.hero-slider').addEventListener('mouseleave', startSlider);
-
-    if (totalSlides > 0) {
-      goToSlide(0);
-      startSlider();
-    }
   </script>
 </body>
 </html>
